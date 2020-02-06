@@ -1,6 +1,8 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <iostream>
+#include <string>
+#include <stdlib.h>
 #include <chrono>
 typedef std::chrono::high_resolution_clock Clock;
 using namespace std;
@@ -8,15 +10,15 @@ using namespace std;
 int fibo_i(int n);
 int fibo_r(int n);
 
-int main()
+int main(int argc, char *argv[])
 {
 
-    int n = 10;
-    int pid1, pid2;
-    int fd1[2], fd2[2]; //pipe descriptors
+    int n = atoi(argv[1]);
+    int pid1, pid2;         // process ids
+    int fd1[2], fd2[2];     // pipe descriptors
 
-    pipe(fd1);
-    pipe(fd2);
+    pipe(fd1);              // init pipe1 
+    pipe(fd2);              // init pipe2
 
     pid1 = fork();
     pid2 = fork();
@@ -24,17 +26,17 @@ int main()
     if (pid1 > 0 && pid2 > 0)       // parent
     {
         int response1, response2;
-        write(fd1[1], &n, sizeof(int));     // 
-        write(fd2[1], &n, sizeof(int));
-        close(fd1[1]);
-        close(fd2[1]);
+        write(fd1[1], &n, sizeof(int));     // write n to pipe1 (to child)
+        write(fd2[1], &n, sizeof(int));     // write n to pipe2 (to child)
+        close(fd1[1]);                      // close write end of pipe 3
+        close(fd2[1]);                      // close write end of pipe 2
 
         wait(NULL); 
         
         read(fd1[0], &response1, sizeof(int));
         read(fd2[0], &response2, sizeof(int));
-        cout << "Child1(Recursive) Response Time: " << response1 << endl;
-        cout << "Child2(Iterative) Response Time: " << response2 << endl;
+        cout << "Child1(Recursive) Response Time: " << response1 << " nanoseconds" << endl;
+        cout << "Child2(Iterative) Response Time: " << response2 << " nanoseconds" << endl;
 
         exit(0);
     }
