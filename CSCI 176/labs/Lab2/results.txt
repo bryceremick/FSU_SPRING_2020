@@ -1,0 +1,80 @@
+➜  Lab2 git:(master) ✗ g++ ./main.cpp -pthread
+➜  Lab2 git:(master) ✗ ./a.out 1               
+Hello from the main thread
+Hello from thread_0 of 1
+Array Slice Size: 500000000
+Array Slice Sum: 1.25e+17
+----------------------------------------
+GLOBAL SUM: 1.25e+17
+EXE TIME: 2.06226seconds
+
+➜  Lab2 git:(master) ✗ ./a.out 2
+Hello from the main thread
+Hello from thread_1 of 2
+Array Slice Size: 250000000
+Array Slice Sum: 9.375e+16
+----------------------------------------
+Hello from thread_0 of 2
+Array Slice Size: 250000000
+Array Slice Sum: 3.125e+16
+----------------------------------------
+GLOBAL SUM: 1.25e+17
+EXE TIME: 1.3984seconds
+
+➜  Lab2 git:(master) ✗ ./a.out 4
+Hello from the main thread
+Hello from thread_1 of 4
+Array Slice Size: 125000000
+Array Slice Sum: 2.34375e+16
+----------------------------------------
+Hello from thread_0 of 4
+Array Slice Size: 125000000
+Array Slice Sum: 7.8125e+15
+----------------------------------------
+Hello from thread_3 of 4
+Array Slice Size: 125000000
+Array Slice Sum: 5.46875e+16
+----------------------------------------
+Hello from thread_2 of 4
+Array Slice Size: 125000000
+Array Slice Sum: 3.90625e+16
+----------------------------------------
+GLOBAL SUM: 1.25e+17
+EXE TIME: 1.06195seconds
+
+➜  Lab2 git:(master) ✗ ./a.out 8
+Hello from the main thread
+Hello from thread_3 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 1.36719e+16
+----------------------------------------
+Hello from thread_0 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 1.95313e+15
+----------------------------------------
+Hello from thread_6 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 2.53906e+16
+----------------------------------------
+Hello from thread_2 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 9.76563e+15
+----------------------------------------
+Hello from thread_4 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 1.75781e+16
+----------------------------------------
+Hello from thread_7 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 2.92969e+16
+----------------------------------------
+Hello from thread_1 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 5.85938e+15
+----------------------------------------
+Hello from thread_5 of 8
+Array Slice Size: 62500000
+Array Slice Sum: 2.14844e+16
+----------------------------------------
+GLOBAL SUM: 1.25e+17
+EXE TIME: 0.89443seconds
