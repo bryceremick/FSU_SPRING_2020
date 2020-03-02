@@ -1,0 +1,65 @@
+Prog3 guide (Pthreads matrix multiplication):
+---------------------------------------------
+
+globals:
+  declare dynamic 2D arrays for matrices A, B, and C; //e.g., double** A;
+  size L, m, n;
+  num_threads;
+  mutex variable; //for cout statement
+
+main()
+{ access num_threads from command line arg;
+  define threads[num_threads];
+  initialize mutex variable;
+
+  access matrix sizes (L, m, n) from command line arg's;
+
+  time checking starts here;
+
+  create (new) 2D dynamic array for matrix A;
+  initialize matrix A with requested values (i+j+1);
+
+  create (new) 2D dynamic array for matrix B;
+  initialize matrix B with requested values (i+j);
+
+  create (new) 2D dynamic array for matrix C;
+  initialize matrix C with requested values (0 each);
+
+  create num_threads many threads with passing slave_func and thread_id;
+
+  all threads join here; //wait until all threads terminate
+
+  display the first 10*10 entries of matrix C;
+  display the last 10*10 entries of matrix C;
+
+  time checking ends here;
+  display execution time;
+
+  delete dynamic arrays for matrices A, B and C;
+}//main
+
+
+slave_func(..)
+{ get my_rank from parameter;
+  display some requested data; //should use mutex
+
+  using for-loop with step_P jump, compute C matrix entries;
+   //start from my_rank, jump P (num_threads) for the next row to process
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
